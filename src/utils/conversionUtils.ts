@@ -58,6 +58,15 @@ export const poundsToKilograms = (pounds: number): number => {
   return pounds / 2.20462;
 };
 
+// Adding the missing functions
+export const gramsToOunces = (grams: number): number => {
+  return grams * 0.035274;
+};
+
+export const ouncesToGrams = (ounces: number): number => {
+  return ounces / 0.035274;
+};
+
 // Volume Conversions
 export const litersToGallons = (liters: number): number => {
   return liters * 0.264172;
