@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,16 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				converter: {
+					background: "#aaa5a5",
+					card: "rgba(6, 0, 36, 0.9)",
+					cardHover: "rgba(15, 0, 102, 0.7)",
+					accent: "#78a1ec",
+					text: "#ffffff",
+					menuItem: "rgba(255, 255, 255, 0.9)",
+					menuItemHover: "rgba(35, 1, 202, 0.685)",
+					border: "rgba(0, 183, 255, 0.37)"
 				}
 			},
 			borderRadius: {
@@ -84,11 +95,29 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'pulsate': {
+					'0%': {
+						transform: 'scale(1)',
+						opacity: '1'
+					},
+					'50%': {
+						transform: 'scale(1.2)',
+						opacity: '0.8'
+					},
+					'100%': {
+						transform: 'scale(1)',
+						opacity: '1'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'pulsate': 'pulsate 1.5s infinite'
+			},
+			backgroundImage: {
+				'gradient-converter': 'linear-gradient(to bottom, rgb(6, 0, 36), rgba(15, 0, 102, 0.5))'
 			}
 		}
 	},
