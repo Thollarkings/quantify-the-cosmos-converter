@@ -34,7 +34,7 @@ const ConverterLayout: React.FC<ConverterLayoutProps> = ({ conversions }) => {
   };
 
   return (
-    <div className="min-h-screen bg-converter-background p-4 md:p-8 flex flex-col items-center justify-center">
+    <div className="min-h-screen p-4 md:p-8 flex flex-col items-center justify-center">
       <div className="w-full max-w-3xl bg-gradient-converter rounded-xl shadow-2xl overflow-hidden hover:shadow-[0_20px_30px_rgba(0,0,0,0.6)] transition-all duration-300">
         <div className="p-6">
           <ConverterHeader 

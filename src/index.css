@@ -91,6 +91,12 @@
 
   body {
     @apply bg-converter-background text-converter-text font-sans m-0 p-0;
+    background-image: url('/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
   }
 }
 
