@@ -74,8 +74,8 @@ const ConverterUnit: React.FC<ConverterUnitProps> = ({
         </div>
 
         {value && (
-          <div className="text-center p-4 bg-white/5 rounded-lg backdrop-blur-sm">
-            <div className="text-lg">
+          <div className="text-center p-4 bg-white rounded-lg">
+            <div className="text-lg text-black">
               <span className="font-medium">{value} {currentFromUnit}</span> = 
               <span className="font-bold ml-2">{result} {currentToUnit}</span>
             </div>

@@ -70,7 +70,7 @@ export default {
 					accent: "#78a1ec",
 					text: "#ffffff",
 					menuItem: "rgba(255, 255, 255, 0.9)",
-					menuItemHover: "rgba(35, 1, 202, 0.685)",
+					menuItemHover: "rgba(35, 1, 202, 0.85)",
 					border: "rgba(0, 183, 255, 0.37)"
 				}
 			},

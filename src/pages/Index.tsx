@@ -4,78 +4,127 @@ import { Menu, X, ChevronRight, ChevronDown } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
 // Import converter components
-import { MilesToKilometers, CentimetersToInches, FeetToMeters, YardsToMeters } from '@/components/converters/LengthConverters';
-import { LitersToGallons, PintsToLiters, CupsToMilliliters, OuncesToMilliliters } from '@/components/converters/VolumeConverters';
-import { CelsiusToFahrenheit, CelsiusToKelvin } from '@/components/converters/TemperatureConverters';
-import { SquareFeetToSquareMeters, SquareMetersToAcres, AcresToHectares } from '@/components/converters/AreaConverters';
-import { KilogramsToPounds } from '@/components/converters/WeightConverters';
+import { MilesToKilometers, CentimetersToInches, FeetToMeters, YardsToMeters, InchesToCentimeters, KilometersToMiles, MetersToFeet } from '@/components/converters/LengthConverters';
+import { LitersToGallons, PintsToLiters, CupsToMilliliters, OuncesToMilliliters, GallonsToLiters, MillilitersToCups } from '@/components/converters/VolumeConverters';
+import { CelsiusToFahrenheit, CelsiusToKelvin, FahrenheitToCelsius, KelvinToCelsius } from '@/components/converters/TemperatureConverters';
+import { SquareFeetToSquareMeters, SquareMetersToAcres, AcresToHectares, HectaresToAcres, SquareMetersToSquareFeet } from '@/components/converters/AreaConverters';
+import { KilogramsToPounds, PoundsToKilograms, GramsToOunces, OuncesToGrams } from '@/components/converters/WeightConverters';
 
 const Index = () => {
   const [selectedConversion, setSelectedConversion] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
   const [openCategory, setOpenCategory] = useState<string | null>(null);
+  const [showInstructions, setShowInstructions] = useState(true);
 
   const conversions = {
     'Length and Distance': [
       { name: 'Miles to Kilometers', value: 'MilesToKilometers' },
+      { name: 'Kilometers to Miles', value: 'KilometersToMiles' },
       { name: 'Centimeters to Inches', value: 'CentimetersToInches' },
+      { name: 'Inches to Centimeters', value: 'InchesToCentimeters' },
       { name: 'Feet to Meters', value: 'FeetToMeters' },
+      { name: 'Meters to Feet', value: 'MetersToFeet' },
       { name: 'Yards to Meters', value: 'YardsToMeters' },
     ],
     'Volume': [
       { name: 'Liters to Gallons', value: 'LitersToGallons' },
+      { name: 'Gallons to Liters', value: 'GallonsToLiters' },
       { name: 'Pints to Liters', value: 'PintsToLiters' },
       { name: 'Cups to Milliliters', value: 'CupsToMilliliters' },
+      { name: 'Milliliters to Cups', value: 'MillilitersToCups' },
       { name: 'Ounces to Milliliters', value: 'OuncesToMilliliters' },
     ],
     'Temperature': [
       { name: 'Celsius to Fahrenheit', value: 'CelsiusToFahrenheit' },
+      { name: 'Fahrenheit to Celsius', value: 'FahrenheitToCelsius' },
       { name: 'Celsius to Kelvin', value: 'CelsiusToKelvin' },
+      { name: 'Kelvin to Celsius', value: 'KelvinToCelsius' },
     ],
     'Area': [
       { name: 'ft² to m²', value: 'SquareFeetToSquareMeters' },
+      { name: 'm² to ft²', value: 'SquareMetersToSquareFeet' },
       { name: 'm² To Acres', value: 'SquareMetersToAcres' },
       { name: 'Acres To Hectares', value: 'AcresToHectares' },
+      { name: 'Hectares to Acres', value: 'HectaresToAcres' },
     ],
     'Weight': [
       { name: 'Kilograms to Pounds', value: 'KilogramsToPounds' },
+      { name: 'Pounds to Kilograms', value: 'PoundsToKilograms' },
+      { name: 'Grams to Ounces', value: 'GramsToOunces' },
+      { name: 'Ounces to Grams', value: 'OuncesToGrams' },
     ],
   };
 
   const renderComponent = () => {
+    setShowInstructions(selectedConversion === '');
+    
     switch (selectedConversion) {
       case 'KilogramsToPounds':
         return <KilogramsToPounds />;
+      case 'PoundsToKilograms':
+        return <PoundsToKilograms />;
+      case 'GramsToOunces':
+        return <GramsToOunces />;
+      case 'OuncesToGrams':
+        return <OuncesToGrams />;
       case 'MilesToKilometers':
         return <MilesToKilometers />;
+      case 'KilometersToMiles':
+        return <KilometersToMiles />;
       case 'CentimetersToInches':
         return <CentimetersToInches />;
+      case 'InchesToCentimeters':
+        return <InchesToCentimeters />;
       case 'FeetToMeters':
         return <FeetToMeters />;
+      case 'MetersToFeet':
+        return <MetersToFeet />;
       case 'YardsToMeters':
         return <YardsToMeters />;
       case 'CelsiusToFahrenheit':
         return <CelsiusToFahrenheit />;
+      case 'FahrenheitToCelsius':
+        return <FahrenheitToCelsius />;
       case 'CelsiusToKelvin':
         return <CelsiusToKelvin />;
+      case 'KelvinToCelsius':
+        return <KelvinToCelsius />;
       case 'LitersToGallons':
         return <LitersToGallons />;
+      case 'GallonsToLiters':
+        return <GallonsToLiters />;
       case 'PintsToLiters':
         return <PintsToLiters />;
       case 'CupsToMilliliters':
         return <CupsToMilliliters />;
+      case 'MillilitersToCups':
+        return <MillilitersToCups />;
       case 'OuncesToMilliliters':
         return <OuncesToMilliliters />;
       case 'SquareFeetToSquareMeters':
         return <SquareFeetToSquareMeters />;
+      case 'SquareMetersToSquareFeet':
+        return <SquareMetersToSquareFeet />;
       case 'SquareMetersToAcres':
         return <SquareMetersToAcres />;
       case 'AcresToHectares':
         return <AcresToHectares />;
+      case 'HectaresToAcres':
+        return <HectaresToAcres />;
       default:
         return (
           <div className="p-8 text-center">
             <p className="text-xl text-white/80">Please select a conversion type from the menu.</p>
+            <div className="mt-4">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setMenuOpen(!menuOpen)}
+                className="text-converter-accent hover:bg-white/10 animate-pulsate"
+              >
+                {menuOpen ? <X size={24} /> : <Menu size={24} />}
+              </Button>
+            </div>
           </div>
         );
     }
@@ -91,14 +140,16 @@ const Index = () => {
         <div className="p-6">
           <div className="flex items-center justify-between mb-6">
             <h1 className="text-3xl md:text-4xl font-bold text-white">Unit Converter</h1>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="text-converter-accent hover:bg-white/10 animate-pulsate"
-            >
-              {menuOpen ? <X size={24} /> : <Menu size={24} />}
-            </Button>
+            {!showInstructions && (
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setMenuOpen(!menuOpen)}
+                className="text-converter-accent hover:bg-white/10 animate-pulsate"
+              >
+                {menuOpen ? <X size={24} /> : <Menu size={24} />}
+              </Button>
+            )}
           </div>
 
           {menuOpen && (
@@ -123,7 +174,7 @@ const Index = () => {
                       {conversions[category].map((conversion) => (
                         <button
                           key={conversion.value}
-                          className="w-full text-left p-2.5 pl-6 text-white hover:bg-converter-menuItemHover transition-colors"
+                          className="w-full text-left p-2.5 pl-6 text-black bg-white/90 hover:bg-converter-menuItemHover hover:text-white transition-colors mb-0.5"
                           onClick={() => {
                             setSelectedConversion(conversion.value);
                             setMenuOpen(false);
