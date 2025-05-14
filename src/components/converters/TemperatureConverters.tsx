@@ -20,6 +20,18 @@ export const CelsiusToFahrenheit: React.FC = () => {
   );
 };
 
+export const FahrenheitToCelsius: React.FC = () => {
+  return (
+    <ConverterUnit
+      title="Fahrenheit to Celsius"
+      fromUnit="°F"
+      toUnit="°C"
+      convertFunction={fahrenheitToCelsius}
+      reverseConvertFunction={celsiusToFahrenheit}
+    />
+  );
+};
+
 export const CelsiusToKelvin: React.FC = () => {
   return (
     <ConverterUnit
@@ -28,6 +40,18 @@ export const CelsiusToKelvin: React.FC = () => {
       toUnit="K"
       convertFunction={celsiusToKelvin}
       reverseConvertFunction={kelvinToCelsius}
+    />
+  );
+};
+
+export const KelvinToCelsius: React.FC = () => {
+  return (
+    <ConverterUnit
+      title="Kelvin to Celsius"
+      fromUnit="K"
+      toUnit="°C"
+      convertFunction={kelvinToCelsius}
+      reverseConvertFunction={celsiusToKelvin}
     />
   );
 };

@@ -24,6 +24,18 @@ export const MilesToKilometers: React.FC = () => {
   );
 };
 
+export const KilometersToMiles: React.FC = () => {
+  return (
+    <ConverterUnit
+      title="Kilometers to Miles"
+      fromUnit="km"
+      toUnit="mi"
+      convertFunction={kilometersToMiles}
+      reverseConvertFunction={milesToKilometers}
+    />
+  );
+};
+
 export const CentimetersToInches: React.FC = () => {
   return (
     <ConverterUnit
@@ -36,6 +48,18 @@ export const CentimetersToInches: React.FC = () => {
   );
 };
 
+export const InchesToCentimeters: React.FC = () => {
+  return (
+    <ConverterUnit
+      title="Inches to Centimeters"
+      fromUnit="in"
+      toUnit="cm"
+      convertFunction={inchesToCentimeters}
+      reverseConvertFunction={centimetersToInches}
+    />
+  );
+};
+
 export const FeetToMeters: React.FC = () => {
   return (
     <ConverterUnit
@@ -44,6 +68,18 @@ export const FeetToMeters: React.FC = () => {
       toUnit="m"
       convertFunction={feetToMeters}
       reverseConvertFunction={metersToFeet}
+    />
+  );
+};
+
+export const MetersToFeet: React.FC = () => {
+  return (
+    <ConverterUnit
+      title="Meters to Feet"
+      fromUnit="m"
+      toUnit="ft"
+      convertFunction={metersToFeet}
+      reverseConvertFunction={feetToMeters}
     />
   );
 };

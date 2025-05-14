@@ -22,6 +22,18 @@ export const SquareFeetToSquareMeters: React.FC = () => {
   );
 };
 
+export const SquareMetersToSquareFeet: React.FC = () => {
+  return (
+    <ConverterUnit
+      title="Square Meters to Square Feet"
+      fromUnit="m²"
+      toUnit="ft²"
+      convertFunction={squareMetersToSquareFeet}
+      reverseConvertFunction={squareFeetToSquareMeters}
+    />
+  );
+};
+
 export const SquareMetersToAcres: React.FC = () => {
   return (
     <ConverterUnit
@@ -42,6 +54,18 @@ export const AcresToHectares: React.FC = () => {
       toUnit="ha"
       convertFunction={acresToHectares}
       reverseConvertFunction={hectaresToAcres}
+    />
+  );
+};
+
+export const HectaresToAcres: React.FC = () => {
+  return (
+    <ConverterUnit
+      title="Hectares to Acres"
+      fromUnit="ha"
+      toUnit="acres"
+      convertFunction={hectaresToAcres}
+      reverseConvertFunction={acresToHectares}
     />
   );
 };

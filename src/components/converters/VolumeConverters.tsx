@@ -24,6 +24,18 @@ export const LitersToGallons: React.FC = () => {
   );
 };
 
+export const GallonsToLiters: React.FC = () => {
+  return (
+    <ConverterUnit
+      title="Gallons to Liters"
+      fromUnit="gal"
+      toUnit="L"
+      convertFunction={gallonsToLiters}
+      reverseConvertFunction={litersToGallons}
+    />
+  );
+};
+
 export const PintsToLiters: React.FC = () => {
   return (
     <ConverterUnit
@@ -44,6 +56,18 @@ export const CupsToMilliliters: React.FC = () => {
       toUnit="mL"
       convertFunction={cupsToMilliliters}
       reverseConvertFunction={millilitersToCups}
+    />
+  );
+};
+
+export const MillilitersToCups: React.FC = () => {
+  return (
+    <ConverterUnit
+      title="Milliliters to Cups"
+      fromUnit="mL"
+      toUnit="cups"
+      convertFunction={millilitersToCups}
+      reverseConvertFunction={cupsToMilliliters}
     />
   );
 };
