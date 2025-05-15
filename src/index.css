@@ -131,3 +131,19 @@
     @apply visible opacity-100;
   }
 }
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-pulsate {
+  animation: pulsate 1s infinite;
+}

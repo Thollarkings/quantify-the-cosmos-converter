@@ -25,6 +25,7 @@ const ConverterUnit: React.FC<ConverterUnitProps> = ({
   const [value, setValue] = useState<string>('');
   const [result, setResult] = useState<string>('');
   const [isForwardConversion, setIsForwardConversion] = useState<boolean>(true);
+  const [isHovering, setIsHovering] = useState<boolean>(false);
 
   useEffect(() => {
     if (value === '') {
@@ -84,8 +85,13 @@ const ConverterUnit: React.FC<ConverterUnitProps> = ({
         
         <Button 
           onClick={handleSwitch}
-          variant="outline" 
-          className="w-full converter-button"
+          onMouseEnter={() => setIsHovering(true)}
+          onMouseLeave={() => setIsHovering(false)}
+          className={`w-full py-3 px-6 rounded-md shadow-lg transition-all duration-300 font-medium mt-4 ${
+            isHovering 
+              ? 'bg-gradient-to-r from-white to-purple-300 text-black' 
+              : 'bg-purple-200 text-black'
+          }`}
         >
           Switch to {!isForwardConversion ? `${fromUnit} to ${toUnit}` : `${toUnit} to ${fromUnit}`}
         </Button>

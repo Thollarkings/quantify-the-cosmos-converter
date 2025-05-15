@@ -16,17 +16,26 @@ const ConverterHeader: React.FC<ConverterHeaderProps> = ({
 }) => {
   return (
     <div className="flex items-center justify-between mb-6">
-      <h1 className="text-3xl md:text-4xl font-bold text-white">Unit Converter</h1>
-      {!showInstructions && (
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="text-converter-accent hover:bg-white/10 animate-pulsate"
-        >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
-        </Button>
-      )}
+      <div className="flex-1">
+        {/* Empty div for flex spacing */}
+      </div>
+      
+      <h1 className="text-3xl md:text-4xl font-bold text-white text-center flex-1">
+        Unit Converter
+      </h1>
+      
+      <div className="flex-1 flex justify-end">
+        {!showInstructions && (
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="text-converter-accent hover:bg-white/10 animate-pulsate"
+          >
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          </Button>
+        )}
+      </div>
     </div>
   );
 };
