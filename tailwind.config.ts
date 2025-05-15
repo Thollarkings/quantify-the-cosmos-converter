@@ -102,15 +102,15 @@ export default {
 				},
 				'pulsate': {
 					'0%': {
-						transform: 'scale(1)',
+						transform: 'scale(2)',
 						opacity: '1'
 					},
 					'50%': {
-						transform: 'scale(1.2)',
+						transform: 'scale(2.5)',
 						opacity: '0.8'
 					},
 					'100%': {
-						transform: 'scale(1)',
+						transform: 'scale(2)',
 						opacity: '1'
 					}
 				},
