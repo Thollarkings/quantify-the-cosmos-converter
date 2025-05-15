@@ -115,7 +115,7 @@
   
   .menu-item {
     @apply w-full p-2.5 cursor-pointer border-b border-converter-border bg-white
-    hover:bg-converter-menuItemHover transition-all duration-200 text-black hover:text-white rounded-sm;
+    hover:bg-converter-menuItemHover transition-all duration-200 text-black hover:text-black rounded-sm;
   }
   
   .category-button {
@@ -134,13 +134,13 @@
 
 @keyframes pulsate {
   0% {
-    transform: scale(1);
+    transform: scale(2);
   }
   50% {
-    transform: scale(1.2);
+    transform: scale(2.5);
   }
   100% {
-    transform: scale(1);
+    transform: scale(2);
   }
 }
 

@@ -87,10 +87,10 @@ const ConverterUnit: React.FC<ConverterUnitProps> = ({
           onClick={handleSwitch}
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
-          className={`w-full py-3 px-6 rounded-md shadow-lg transition-all duration-300 font-medium mt-4 ${
+          className={`w-full py-3 px-6 rounded-md shadow-lg transition-all duration-300 font-medium mt-4 text-black ${
             isHovering 
-              ? 'bg-gradient-to-r from-white to-purple-300 text-black' 
-              : 'bg-purple-200 text-black'
+              ? 'bg-gradient-to-r from-white to-purple-300' 
+              : 'bg-purple-200'
           }`}
         >
           Switch to {!isForwardConversion ? `${fromUnit} to ${toUnit}` : `${toUnit} to ${fromUnit}`}
