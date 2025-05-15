@@ -17,12 +17,24 @@ const ConverterLayout: React.FC<ConverterLayoutProps> = ({ conversions }) => {
   const [openCategory, setOpenCategory] = React.useState<string | null>(null);
   const [showInstructions, setShowInstructions] = React.useState<boolean>(true);
   
+  // Reset to instructions when no conversion is selected
   React.useEffect(() => {
     setShowInstructions(selectedConversion === '');
+    
+    // If we're back at instructions, also reset the menu state
+    if (selectedConversion === '') {
+      setOpenCategory(null);
+    }
   }, [selectedConversion]);
 
   const toggleCategory = (category: string) => {
     setOpenCategory(openCategory === category ? null : category);
+  };
+  
+  // Function to handle going back to main menu
+  const handleBackToMenu = () => {
+    setSelectedConversion('');
+    setMenuOpen(true);
   };
 
   return (
@@ -48,7 +60,17 @@ const ConverterLayout: React.FC<ConverterLayoutProps> = ({ conversions }) => {
             {showInstructions ? (
               <ConverterInstructions menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
             ) : (
-              <ConverterContent selectedConversion={selectedConversion} />
+              <>
+                <ConverterContent selectedConversion={selectedConversion} />
+                <div className="mt-6 text-center">
+                  <button 
+                    onClick={handleBackToMenu}
+                    className="py-2 px-4 bg-purple-200 hover:bg-gradient-to-r hover:from-white hover:to-purple-100 text-black rounded-full transition-all duration-300 shadow-md"
+                  >
+                    Back to All Conversions
+                  </button>
+                </div>
+              </>
             )}
           </div>
         </div>

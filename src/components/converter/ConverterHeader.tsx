@@ -15,15 +15,31 @@ const ConverterHeader: React.FC<ConverterHeaderProps> = ({
 }) => {
   return (
     <div className="flex justify-between items-center mb-6">
-      <h1 className="text-3xl font-bold text-white">Unit Converter</h1>
+      <div className="w-10"> {/* Empty space for balance */}
+        {!showInstructions && (
+          <button
+            className="p-2 text-white hover:text-converter-accent transition-colors"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+          >
+            <Menu size={24} />
+          </button>
+        )}
+      </div>
       
-      <button
-        className="p-2 text-white hover:text-converter-accent transition-colors"
-        onClick={() => setMenuOpen(!menuOpen)}
-        aria-label={menuOpen ? "Close menu" : "Open menu"}
-      >
-        <Menu size={32} className="animate-pulsate" />
-      </button>
+      <h1 className="text-3xl font-bold text-white text-center">Unit Converter</h1>
+      
+      <div className="w-10"> {/* Empty space for balance */}
+        {!showInstructions && (
+          <button
+            className="p-2 text-white hover:text-converter-accent transition-colors"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+          >
+            <Menu size={24} className="animate-pulsate" />
+          </button>
+        )}
+      </div>
     </div>
   );
 };
