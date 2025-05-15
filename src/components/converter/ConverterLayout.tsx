@@ -5,15 +5,7 @@ import ConverterMenu from './ConverterMenu';
 import ConverterContent from './ConverterContent';
 import ConverterInstructions from './ConverterInstructions';
 import ConverterFooter from './ConverterFooter';
-
-interface ConversionOption {
-  name: string;
-  value: string;
-}
-
-interface ConversionCategories {
-  [key: string]: ConversionOption[];
-}
+import { ConversionCategories } from './conversionData';
 
 interface ConverterLayoutProps {
   conversions: ConversionCategories;

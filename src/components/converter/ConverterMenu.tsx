@@ -1,22 +1,7 @@
 
 import React, { useState } from 'react';
 import { ChevronDown, ChevronRight } from 'lucide-react';
-
-interface ConversionOption {
-  name: string;
-  value: string;
-  description?: string;
-  category?: "everyday" | "specialized" | "scientific" | "fun";
-}
-
-interface ConversionSubcategory {
-  name: string;
-  options: ConversionOption[];
-}
-
-interface ConversionCategories {
-  [key: string]: ConversionSubcategory[];
-}
+import { ConversionOption, ConversionSubcategory, ConversionCategories } from './conversionData';
 
 interface ConverterMenuProps {
   menuOpen: boolean;
