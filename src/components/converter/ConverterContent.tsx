@@ -1,7 +1,14 @@
+import React, { lazy, Suspense } from 'react';
+import { Loader2 } from 'lucide-react';
 
-import React from 'react';
+// Dynamic imports for converter components
+const LengthConverter = lazy(() => import('@/components/converters/dynamic/LengthConverter'));
+const TemperatureConverter = lazy(() => import('@/components/converters/dynamic/TemperatureConverter'));
+const VolumeConverter = lazy(() => import('@/components/converters/dynamic/VolumeConverter'));
+const WeightConverter = lazy(() => import('@/components/converters/dynamic/WeightConverter'));
+const AreaConverter = lazy(() => import('@/components/converters/dynamic/AreaConverter'));
 
-// Import converter components
+// Existing import fallbacks
 import { 
   MilesToKilometers, 
   CentimetersToInches, 
@@ -47,63 +54,41 @@ interface ConverterContentProps {
   selectedConversion: string;
 }
 
+// Loading component 
+const LoadingFallback = () => (
+  <div className="flex flex-col items-center justify-center p-10">
+    <Loader2 className="h-16 w-16 animate-spin text-white" />
+    <p className="mt-4 text-white">Loading converter...</p>
+  </div>
+);
+
 const ConverterContent: React.FC<ConverterContentProps> = ({ selectedConversion }) => {
-  switch (selectedConversion) {
-    case 'KilogramsToPounds':
-      return <KilogramsToPounds />;
-    case 'PoundsToKilograms':
-      return <PoundsToKilograms />;
-    case 'GramsToOunces':
-      return <GramsToOunces />;
-    case 'OuncesToGrams':
-      return <OuncesToGrams />;
-    case 'MilesToKilometers':
-      return <MilesToKilometers />;
-    case 'KilometersToMiles':
-      return <KilometersToMiles />;
-    case 'CentimetersToInches':
-      return <CentimetersToInches />;
-    case 'InchesToCentimeters':
-      return <InchesToCentimeters />;
-    case 'FeetToMeters':
-      return <FeetToMeters />;
-    case 'MetersToFeet':
-      return <MetersToFeet />;
-    case 'YardsToMeters':
-      return <YardsToMeters />;
-    case 'CelsiusToFahrenheit':
-      return <CelsiusToFahrenheit />;
-    case 'FahrenheitToCelsius':
-      return <FahrenheitToCelsius />;
-    case 'CelsiusToKelvin':
-      return <CelsiusToKelvin />;
-    case 'KelvinToCelsius':
-      return <KelvinToCelsius />;
-    case 'LitersToGallons':
-      return <LitersToGallons />;
-    case 'GallonsToLiters':
-      return <GallonsToLiters />;
-    case 'PintsToLiters':
-      return <PintsToLiters />;
-    case 'CupsToMilliliters':
-      return <CupsToMilliliters />;
-    case 'MillilitersToCups':
-      return <MillilitersToCups />;
-    case 'OuncesToMilliliters':
-      return <OuncesToMilliliters />;
-    case 'SquareFeetToSquareMeters':
-      return <SquareFeetToSquareMeters />;
-    case 'SquareMetersToSquareFeet':
-      return <SquareMetersToSquareFeet />;
-    case 'SquareMetersToAcres':
-      return <SquareMetersToAcres />;
-    case 'AcresToHectares':
-      return <AcresToHectares />;
-    case 'HectaresToAcres':
-      return <HectaresToAcres />;
-    default:
-      return null;
+  // Helper function to determine converter type from value
+  const getConverterType = (value: string): string => {
+    if (value.includes('ToSquare') || value.includes('Square') || value.includes('Acres') || value.includes('Hectares')) return 'area';
+    if (value.includes('Celsius') || value.includes('Fahrenheit') || value.includes('Kelvin') || value.includes('Rankine')) return 'temperature';
+    if (value.includes('Liters') || value.includes('Gallons') || value.includes('Cubic') || value.includes('Milliliters')) return 'volume';
+    if (value.includes('Kilograms') || value.includes('Pounds') || value.includes('Grams') || value.includes('Ounces') || value.includes('Weight')) return 'weight';
+    return 'length'; // Default
+  };
+
+  // Use dynamic converter if available, fallback to specific component
+  if (selectedConversion) {
+    const converterType = getConverterType(selectedConversion);
+    
+    return (
+      <Suspense fallback={<LoadingFallback />}>
+        {converterType === 'length' && <LengthConverter conversion={selectedConversion} />}
+        {converterType === 'volume' && <VolumeConverter conversion={selectedConversion} />}
+        {converterType === 'temperature' && <TemperatureConverter conversion={selectedConversion} />}
+        {converterType === 'area' && <AreaConverter conversion={selectedConversion} />}
+        {converterType === 'weight' && <WeightConverter conversion={selectedConversion} />}
+      </Suspense>
+    );
   }
+
+  // If there's no conversion selected, or we have an error, return null
+  return null;
 };
 
 export default ConverterContent;

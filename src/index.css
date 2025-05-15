@@ -90,8 +90,8 @@
   }
 
   body {
-    @apply bg-converter-background text-converter-text font-sans m-0 p-0;
-    background-image: url('/background.jpg');
+    @apply text-converter-text font-sans m-0 p-0;
+    background-image: url('/lovable-uploads/57e50f35-f17a-4193-a831-74e20e2db384.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -121,5 +121,13 @@
   .category-button {
     @apply w-full p-2.5 text-center text-white text-lg font-medium bg-transparent
     border-b border-white/20 hover:bg-converter-menuItemHover transition-all duration-200;
+  }
+
+  .tooltip {
+    @apply absolute invisible opacity-0 bg-black/80 text-white p-2 rounded text-xs z-50 transition-all duration-300 max-w-xs;
+  }
+
+  .has-tooltip:hover .tooltip {
+    @apply visible opacity-100;
   }
 }
